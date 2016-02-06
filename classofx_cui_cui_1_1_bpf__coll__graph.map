@@ -1,0 +1,9 @@
+<map id="ofxCuiCui::Bpf" name="ofxCuiCui::Bpf">
+<area shape="rect" id="node2" href="$classofx_cui_cui_1_1_component.html" title="Base UI Component (equivalent to a label) " alt="" coords="321,187,477,212"/>
+<area shape="rect" id="node3" href="$classofx_cui_cui_1_1_text_box.html" title="Text box font wrapper. " alt="" coords="36,5,170,31"/>
+<area shape="rect" id="node4" href="$classofx_cui_cui_1_1_icon.html" title="Icon image box wrapper. " alt="" coords="48,55,159,80"/>
+<area shape="rect" id="node5" href="$classofx_cui_cui_1_1_style.html" title="Style structure shared among all components. " alt="" coords="45,275,162,300"/>
+<area shape="rect" id="node6" href="$classofx_cui_cui_1_1_graph.html" title="2D Graph Area (with virtual coordinate system) " alt="" coords="337,324,461,349"/>
+<area shape="rect" id="node7" href="$structofx_cui_cui_1_1_graph_1_1_view_area.html" title="View area rectangle (in pixels) " alt="" coords="10,324,197,349"/>
+<area shape="rect" id="node8" href="$structofx_cui_cui_1_1_graph_1_1_graph_area.html" title="Bounds of the graph space. " alt="" coords="5,373,202,399"/>
+</map>
