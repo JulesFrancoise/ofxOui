@@ -1,0 +1,5 @@
+doc/html
+*.app
+example-all-components/build
+example-all-components/example-all-components.xcodeproj/project.xcworkspace
+example-all-components/example-all-components.xcodeproj/xcuserdata
