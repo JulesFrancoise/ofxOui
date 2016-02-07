@@ -52,8 +52,6 @@ ofxCuiCui::Numbox::~Numbox() {
 
 void ofxCuiCui::Numbox::update() {
     ofxCuiCui::Component::update();
-    value = (value > max) ? max : value;
-    value = (value < min) ? min : value;
     value_text_.color = font.color;
     value_text_.text = user_input_;
     if (user_input_.size() == 0) {
@@ -69,6 +67,7 @@ void ofxCuiCui::Numbox::update() {
 }
 
 void ofxCuiCui::Numbox::clipValue() {
+    value = drag_step_ * round(value / drag_step_);
     value = (value > max) ? max : (value < min) ? min : value;
 }
 

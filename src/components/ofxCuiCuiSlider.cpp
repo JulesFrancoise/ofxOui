@@ -85,6 +85,7 @@ void ofxCuiCui::Slider::drawLabel() {
 
 void ofxCuiCui::Slider::mousePressed(ofMouseEventArgs &e) {
     if (disabled) return;
+    drag_step_ = pow(10., -precision);
     if (inside(e.x, e.y) && e.button == 0) {
         active = true;
         user_input_ = "";
