@@ -135,6 +135,7 @@ void ofxCuiCui::Numbox::keyPressed(ofKeyEventArgs &e) {
     if (e.key == OF_KEY_BACKSPACE || e.key == OF_KEY_DEL) {
         user_input_.pop_back();
     } else if (e.key == OF_KEY_RETURN || e.key == OF_KEY_TAB) {
+        if (user_input_ == "") return;
         value = std::stof(user_input_);
         clipValue();
         ofxCuiCui::Numbox::ValueEvent event =
