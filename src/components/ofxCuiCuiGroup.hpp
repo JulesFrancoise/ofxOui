@@ -90,6 +90,12 @@ class Group {
     shared_ptr<Component> getComponentByLabel(string label);
 
     /**
+     @brief get a vector of pointers to the components of the group
+     @return vector of pointers to the components of the group
+     */
+    vector<shared_ptr<Component>> getComponents();
+
+    /**
      @brief remove a given component from the group by pointer
      @param component shared pointer to the component
      @return true if the component was successfully removed from the group
@@ -158,6 +164,11 @@ class Group {
      @brief width of the group frame
      */
     int frame_width;
+
+    /**
+     @brief width of the group frame
+     */
+    ofxCuiCui::Anchor alignment = ofxCuiCui::Anchor::TopLeft;
 
   protected:
     map<vector<int>, shared_ptr<Component>> components;

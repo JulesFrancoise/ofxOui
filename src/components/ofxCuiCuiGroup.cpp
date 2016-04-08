@@ -49,19 +49,51 @@ void ofxCuiCui::Group::setup() {
     if (max_component_width > 0 && colWidth > max_component_width) {
         colWidth = max_component_width;
     }
+
+    float offset_x(x + padding);
+    float offset_y(y + padding);
+
+    if (alignment == ofxCuiCui::Anchor::TopCenter ||
+        alignment == ofxCuiCui::Anchor::MiddleCenter ||
+        alignment == ofxCuiCui::Anchor::BottomCenter) {
+        if (numCols % 2)
+            offset_x = x + width / 2 - colWidth / 2 -
+                       numCols / 2 * (padding + colWidth);
+        else
+            offset_x = x + width / 2 + padding / 2 -
+                       numCols / 2 * (padding + colWidth);
+    }
+
+    if (alignment == ofxCuiCui::Anchor::TopRight ||
+        alignment == ofxCuiCui::Anchor::MiddleRight ||
+        alignment == ofxCuiCui::Anchor::BottomRight) {
+        offset_x = x + width - numCols * (padding + colWidth);
+    }
+
+    if (alignment == ofxCuiCui::Anchor::MiddleLeft ||
+        alignment == ofxCuiCui::Anchor::MiddleCenter ||
+        alignment == ofxCuiCui::Anchor::MiddleRight) {
+        if (numRows % 2)
+            offset_y = y + height / 2 - rowHeight / 2 -
+                       numRows / 2 * (padding + rowHeight);
+        else
+            offset_y = y + height / 2 + padding / 2 -
+                       numRows / 2 * (padding + rowHeight);
+    }
+
+    if (alignment == ofxCuiCui::Anchor::BottomLeft ||
+        alignment == ofxCuiCui::Anchor::BottomCenter ||
+        alignment == ofxCuiCui::Anchor::BottomRight) {
+        offset_y = y + height - numRows * (padding + rowHeight);
+    }
+
     for (auto &component : components) {
         if (!component.second) continue;
-        if (numCols % 2)
-            component.second->x =
-                x + width / 2 +
-                (component.first[1] - numCols / 2) * (padding + colWidth) -
-                colWidth / 2;
-        else
-            component.second->x =
-                x + width / 2 + padding / 2 +
-                (component.first[1] - numCols / 2) * (padding + colWidth);
+
+        component.second->x =
+            offset_x + component.first[1] * (padding + colWidth);
         component.second->y =
-            y + padding + component.first[0] * (padding + rowHeight);
+            offset_y + component.first[0] * (padding + rowHeight);
         component.second->width =
             (colWidth + padding) * component.first[3] - padding;
         component.second->height =
@@ -135,6 +167,15 @@ shared_ptr<ofxCuiCui::Component> ofxCuiCui::Group::getComponentByLabel(
         }
     }
     return nullptr;
+}
+
+vector<shared_ptr<ofxCuiCui::Component>> ofxCuiCui::Group::getComponents() {
+    vector<shared_ptr<ofxCuiCui::Component>> comp_vec;
+    comp_vec.reserve(components.size());
+    for (auto &c : components) {
+        comp_vec.push_back(c.second);
+    }
+    return comp_vec;
 }
 
 bool ofxCuiCui::Group::removeComponent(
