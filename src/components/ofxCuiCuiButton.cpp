@@ -53,8 +53,7 @@ void ofxCuiCui::Button::mousePressed(ofMouseEventArgs& e) {
             num_frames_on_ = 5;
         }
         if (click_event_callback_ != nullptr) {
-            ofxCuiCui::Button::ClickEvent event =
-                ofxCuiCui::Button::ClickEvent(this, active);
+            ofxCuiCui::Button::ClickEvent event(this, active);
             click_event_callback_(event);
         }
     }

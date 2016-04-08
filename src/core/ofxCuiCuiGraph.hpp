@@ -51,6 +51,24 @@ class Graph {
     };
 
     /**
+     @brief Event arguments for pan/zoom events resulting in bounds changes of
+     the graph area
+     */
+    class BoundsChangedEvent : public ofEventArgs {
+      public:
+        /**
+         @brief Constructor
+         @param sender_ pointer to the sender component
+         */
+        BoundsChangedEvent(Graph* sender_);
+
+        /**
+         @brief pointer to the sender component
+         */
+        Graph const* sender;
+    };
+
+    /**
      @brief Default Constructor
      */
     Graph();
@@ -59,6 +77,21 @@ class Graph {
      @brief Destructor
      */
     ~Graph();
+
+    /**
+     @brief Set callback function for bounds changed events
+     @param owner pointer to the owner object
+     @param listenerMethod method to be called on eaech event
+     @tparam T type of the owner object
+     @tparam args arguments of the callback function
+     @tparam ListenerClass class to which the listener method belongs
+     */
+    template <typename T, typename args, class ListenerClass>
+    void onBoundsChanged(T* owner,
+                         void (ListenerClass::*listenerMethod)(args)) {
+        using namespace std::placeholders;
+        bounds_changed_event_callback_ = std::bind(listenerMethod, owner, _1);
+    }
 
     /**
      @brief Checks if a point is in the view area
@@ -111,6 +144,11 @@ class Graph {
      @brief Bounds of the graph space
      */
     GraphArea graph_area;
+
+  protected:
+    void mouseScrolled(ofMouseEventArgs& e);
+    std::function<void(Graph::BoundsChangedEvent&)>
+        bounds_changed_event_callback_;
 };
 }
 
