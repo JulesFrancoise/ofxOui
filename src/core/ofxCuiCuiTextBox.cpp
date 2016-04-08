@@ -31,38 +31,45 @@ ofxCuiCui::TextBox::TextBox()
 ofxCuiCui::TextBox::~TextBox() { ofxCuiCui::Globals::releaseFont(this); }
 
 void ofxCuiCui::TextBox::update() {
-    if (text.empty()) return;
-    rect = base_Font_->getStringBoundingBox(text, x, y);
-    y_diff_ = y - rect.y;
-    int avgLetterHeight = base_Font_->getStringBoundingBox("n", x, y).height;
+    if (text.empty()) {
+        rect.x = x;
+        rect.y = y;
+        rect.width = 0;
+        rect.height = 0;
+    } else {
+        rect = base_Font_->getStringBoundingBox(text, x, y);
+        y_diff_ = y - rect.y;
+        int avgLetterHeight =
+            base_Font_->getStringBoundingBox("n", x, y).height;
 
-    if (alignment == ofxCuiCui::Anchor::TopLeft) {
-        rect.x = x + padding;
-        rect.y = y + padding;
-    } else if (alignment == ofxCuiCui::Anchor::TopCenter) {
-        rect.x = x + width / 2 - rect.width / 2;
-        rect.y = y + padding;
-    } else if (alignment == ofxCuiCui::Anchor::TopRight) {
-        rect.x = x + width - padding - rect.width;
-        rect.y = y + padding;
-    } else if (alignment == ofxCuiCui::Anchor::MiddleLeft) {
-        rect.x = x + padding;
-        rect.y = y + height / 2 - rect.height / 2;
-    } else if (alignment == ofxCuiCui::Anchor::MiddleCenter) {
-        rect.x = x + width / 2 - rect.width / 2;
-        rect.y = y + height / 2 - rect.height / 2;
-    } else if (alignment == ofxCuiCui::Anchor::MiddleRight) {
-        rect.x = x + width - padding - rect.width;
-        rect.y = y + height / 2 - rect.height / 2;
-    } else if (alignment == ofxCuiCui::Anchor::BottomLeft) {
-        rect.x = x + padding;
-        rect.y = y + height - padding - rect.height;
-    } else if (alignment == ofxCuiCui::Anchor::BottomCenter) {
-        rect.x = x + width / 2 - rect.width / 2;
-        rect.y = y + height - padding - rect.height;
-    } else {  // (alignment == ofxCuiCui::Anchor::BottomRight)
-        rect.x = x + width - padding - rect.width;
-        rect.y = y + height - padding - rect.height;
+        if (alignment == ofxCuiCui::Anchor::TopLeft) {
+            rect.x = x + padding;
+            rect.y = y + padding;
+        } else if (alignment == ofxCuiCui::Anchor::TopCenter) {
+            rect.x = x + width / 2 - rect.width / 2;
+            rect.y = y + padding;
+        } else if (alignment == ofxCuiCui::Anchor::TopRight) {
+            rect.x = x + width - padding - rect.width;
+            rect.y = y + padding;
+        } else if (alignment == ofxCuiCui::Anchor::MiddleLeft) {
+            rect.x = x + padding;
+            rect.y = y + height / 2 - rect.height / 2;
+        } else if (alignment == ofxCuiCui::Anchor::MiddleCenter) {
+            rect.x = x + width / 2 - rect.width / 2;
+            rect.y = y + height / 2 - rect.height / 2;
+        } else if (alignment == ofxCuiCui::Anchor::MiddleRight) {
+            rect.x = x + width - padding - rect.width;
+            rect.y = y + height / 2 - rect.height / 2;
+        } else if (alignment == ofxCuiCui::Anchor::BottomLeft) {
+            rect.x = x + padding;
+            rect.y = y + height - padding - rect.height;
+        } else if (alignment == ofxCuiCui::Anchor::BottomCenter) {
+            rect.x = x + width / 2 - rect.width / 2;
+            rect.y = y + height - padding - rect.height;
+        } else {  // (alignment == ofxCuiCui::Anchor::BottomRight)
+            rect.x = x + width - padding - rect.width;
+            rect.y = y + height - padding - rect.height;
+        }
     }
 }
 
