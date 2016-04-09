@@ -41,43 +41,48 @@ ofxCuiCui::Matrix::~Matrix() {
                      &ofxCuiCui::Matrix::mouseDragged);
 }
 
-void ofxCuiCui::Matrix::update() {
+void ofxCuiCui::Matrix::setup() {
     ofxCuiCui::Component::update();
+    if (shape == ofxCuiCui::Shape::Circle) {
+        float radius = min(width, height) / 2.;
+        grid_rect_.y = y + height / 2. + padding - M_SQRT1_2 * radius;
+        grid_rect_.x = x + width / 2. + padding - M_SQRT1_2 * radius;
+        grid_rect_.width = width - 2. * (grid_rect_.x - x);
+        grid_rect_.height = height - 2. * (grid_rect_.y - y);
+    } else {
+        grid_rect_.x = x + padding;
+        grid_rect_.y = font.rect.y + font.rect.height + font.padding + padding;
+        grid_rect_.width = width - 2 * padding;
+        grid_rect_.height =
+            height - font.rect.height - 2 * font.padding - 2 * padding;
+    }
+    button_width_ = (grid_rect_.width - (cols - 1) * padding) / cols;
+    button_height_ = (grid_rect_.height - (rows - 1) * padding) / rows;
+    vector<vector<ofxCuiCui::Button>> oldButtons(std::move(buttons));
+    buttons.resize(rows);
+    for (int row = 0; row < rows; row++) {
+        buttons[row].resize(cols);
+        for (int col = 0; col < cols; col++) {
+            buttons[row][col].x =
+                grid_rect_.x + col * (button_width_ + padding);
+            buttons[row][col].y =
+                grid_rect_.y + row * (button_height_ + padding);
+            buttons[row][col].width = button_width_;
+            buttons[row][col].height = button_height_;
+            buttons[row][col].toggle = true;
+            buttons[row][col].style = style;
+            buttons[row][col].shape = button_shape;
+            buttons[row][col].onClick(this,
+                                      &::ofxCuiCui::Matrix::onButtonClick);
+        }
+    }
+}
+
+void ofxCuiCui::Matrix::update() {
     if (rows != buttons.size() || cols != buttons[0].size()) {
-        if (shape == ofxCuiCui::Shape::Circle) {
-            float radius = min(width, height) / 2.;
-            grid_rect_.y = y + height / 2. + padding - M_SQRT1_2 * radius;
-            grid_rect_.x = x + width / 2. + padding - M_SQRT1_2 * radius;
-            grid_rect_.width = width - 2. * (grid_rect_.x - x);
-            grid_rect_.height = height - 2. * (grid_rect_.y - y);
-        } else {
-            grid_rect_.x = x + padding;
-            grid_rect_.y =
-                font.rect.y + font.rect.height + font.padding + padding;
-            grid_rect_.width = width - 2 * padding;
-            grid_rect_.height =
-                height - font.rect.height - 2 * font.padding - 2 * padding;
-        }
-        button_width_ = (grid_rect_.width - (cols - 1) * padding) / cols;
-        button_height_ = (grid_rect_.height - (rows - 1) * padding) / rows;
-        vector<vector<ofxCuiCui::Button>> oldButtons(std::move(buttons));
-        buttons.resize(rows);
-        for (int row = 0; row < rows; row++) {
-            buttons[row].resize(cols);
-            for (int col = 0; col < cols; col++) {
-                buttons[row][col].x =
-                    grid_rect_.x + col * (button_width_ + padding);
-                buttons[row][col].y =
-                    grid_rect_.y + row * (button_height_ + padding);
-                buttons[row][col].width = button_width_;
-                buttons[row][col].height = button_height_;
-                buttons[row][col].toggle = true;
-                buttons[row][col].style = style;
-                buttons[row][col].shape = button_shape;
-                buttons[row][col].onClick(this,
-                                          &::ofxCuiCui::Matrix::onButtonClick);
-            }
-        }
+        setup();
+    } else {
+        ofxCuiCui::Component::update();
     }
     current_background_color_ = style.background_color_off;
     for (auto &buttonRow : buttons) {

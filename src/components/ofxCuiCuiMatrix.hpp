@@ -85,6 +85,11 @@ class Matrix : public Component {
     virtual ~Matrix();
 
     /**
+     @brief Setup the Matrix layout
+     */
+    virtual void setup();
+
+    /**
      @brief OF-like update function
      */
     virtual void update();
