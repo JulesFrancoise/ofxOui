@@ -19,6 +19,8 @@
 
 #include "ofxCuiCuiComponent.hpp"
 
+ofxCuiCui::Component* ofxCuiCui::Component::blocking_component = nullptr;
+
 ofxCuiCui::Component::Component(float x_, float y_, float width_, float height_)
     : x(x_), y(y_), width(width_), height(height_) {}
 

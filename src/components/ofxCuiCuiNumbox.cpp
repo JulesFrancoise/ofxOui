@@ -84,7 +84,7 @@ void ofxCuiCui::Numbox::drawLabel() {
 }
 
 void ofxCuiCui::Numbox::mouseDragged(ofMouseEventArgs &e) {
-    if (disabled) return;
+    if (disabled || (blocking_component && blocking_component != this)) return;
     dragging_ = true;
     hover_ = inside(e.x, e.y);
     if (!active) return;
@@ -99,7 +99,7 @@ void ofxCuiCui::Numbox::mouseDragged(ofMouseEventArgs &e) {
 }
 
 void ofxCuiCui::Numbox::mousePressed(ofMouseEventArgs &e) {
-    if (disabled) return;
+    if (disabled || (blocking_component && blocking_component != this)) return;
     if (inside(e.x, e.y) && e.button == 0) {
         active = true;
         y_pressed_ = e.y;
@@ -122,7 +122,7 @@ void ofxCuiCui::Numbox::mousePressed(ofMouseEventArgs &e) {
 }
 
 void ofxCuiCui::Numbox::mouseReleased(ofMouseEventArgs &e) {
-    if (disabled) return;
+    if (disabled || (blocking_component && blocking_component != this)) return;
     if (dragging_) {
         active = false;
     }
@@ -130,7 +130,7 @@ void ofxCuiCui::Numbox::mouseReleased(ofMouseEventArgs &e) {
 }
 
 void ofxCuiCui::Numbox::keyPressed(ofKeyEventArgs &e) {
-    if (disabled) return;
+    if (disabled || (blocking_component && blocking_component != this)) return;
     if (!active) return;
     if (e.key == OF_KEY_BACKSPACE || e.key == OF_KEY_DEL) {
         user_input_.pop_back();

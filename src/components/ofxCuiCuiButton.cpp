@@ -44,7 +44,7 @@ void ofxCuiCui::Button::update() {
 }
 
 void ofxCuiCui::Button::mousePressed(ofMouseEventArgs& e) {
-    if (disabled) return;
+    if (disabled || (blocking_component && blocking_component != this)) return;
     if (inside(e.x, e.y) && e.button == 0) {
         if (toggle) {
             active = !active;

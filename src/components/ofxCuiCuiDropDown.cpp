@@ -65,28 +65,31 @@ void ofxCuiCui::DropDown::draw() {
 }
 
 void ofxCuiCui::DropDown::mouseMoved(ofMouseEventArgs &e) {
-    if (disabled) return;
+    if (disabled || (blocking_component && blocking_component != this)) return;
     mouse_moved_ = true;
 }
 
 void ofxCuiCui::DropDown::mouseDragged(ofMouseEventArgs &e) {
-    if (disabled) return;
+    if (disabled || (blocking_component && blocking_component != this)) return;
     mouse_moved_ = !inside(e.x, e.y);
 }
 
 void ofxCuiCui::DropDown::mousePressed(ofMouseEventArgs &e) {
-    if (disabled) return;
+    if (disabled || (blocking_component && blocking_component != this)) return;
     if (inside(e.x, e.y) && e.button == 0) {
         active = !active;
         mouse_moved_ = false;
     }
     if (active) {
+        blocking_component = this;
         createSubGui();
+    } else if (blocking_component == this) {
+        blocking_component = nullptr;
     }
 }
 
 void ofxCuiCui::DropDown::mouseReleased(ofMouseEventArgs &e) {
-    if (disabled) return;
+    if (disabled || (blocking_component && blocking_component != this)) return;
     if (!active || e.button != 0) return;
     for (auto &gui : sub_buttons_) {
         if (gui->inside(e.x, e.y)) {
@@ -101,6 +104,7 @@ void ofxCuiCui::DropDown::mouseReleased(ofMouseEventArgs &e) {
     }
     if (mouse_moved_) {
         active = false;
+        if (blocking_component == this) blocking_component = nullptr;
     }
 }
 

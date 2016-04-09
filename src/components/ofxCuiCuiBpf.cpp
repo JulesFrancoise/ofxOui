@@ -106,6 +106,7 @@ void ofxCuiCui::Bpf::drawLabel() {
 }
 
 void ofxCuiCui::Bpf::mousePressed(ofMouseEventArgs &e) {
+    if (disabled || (blocking_component && blocking_component != this)) return;
     bool dbl_click = (ofGetElapsedTimef() - time_mouse_pressed_) < 0.4;
     time_mouse_pressed_ = ofGetElapsedTimef();
     point_selected_ = -1;
@@ -149,7 +150,8 @@ void ofxCuiCui::Bpf::mousePressed(ofMouseEventArgs &e) {
 }
 
 void ofxCuiCui::Bpf::mouseDragged(ofMouseEventArgs &e) {
-    if (disabled || values.empty() || point_selected_ < 0) return;
+    if (disabled || (blocking_component && blocking_component != this)) return;
+    if (values.empty() || point_selected_ < 0) return;
     ofVec2f graphPoint(graph.pix2coord(ofVec2f(e.x, e.y)));
     if (point_selected_ > 0)
         graphPoint.x = max(graphPoint.x, values[point_selected_ - 1].x);

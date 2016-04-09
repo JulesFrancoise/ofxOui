@@ -84,7 +84,7 @@ void ofxCuiCui::Slider::drawLabel() {
 }
 
 void ofxCuiCui::Slider::mousePressed(ofMouseEventArgs &e) {
-    if (disabled) return;
+    if (disabled || (blocking_component && blocking_component != this)) return;
     drag_step_ = pow(10., -precision);
     if (inside(e.x, e.y) && e.button == 0) {
         active = true;
@@ -112,7 +112,8 @@ void ofxCuiCui::Slider::mousePressed(ofMouseEventArgs &e) {
 }
 
 void ofxCuiCui::Slider::mouseDragged(ofMouseEventArgs &e) {
-    if (disabled || !active || !dragging_) return;
+    if (disabled || (blocking_component && blocking_component != this)) return;
+    if (!active || !dragging_) return;
     if (layout == Layout::Horizontal)
         value =
             ((e.x - slider_rect_.x) / slider_rect_.width) * (max - min) + min;

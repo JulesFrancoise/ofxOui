@@ -58,17 +58,17 @@ void ofxCuiCui::TextInput::drawLabel() {
 }
 
 void ofxCuiCui::TextInput::mouseMoved(ofMouseEventArgs &e) {
-    if (disabled) return;
+    if (disabled || (blocking_component && blocking_component != this)) return;
     hover_ = inside(e.x, e.y);
 }
 
 void ofxCuiCui::TextInput::mouseDragged(ofMouseEventArgs &e) {
-    if (disabled) return;
+    if (disabled || (blocking_component && blocking_component != this)) return;
     hover_ = inside(e.x, e.y);
 }
 
 void ofxCuiCui::TextInput::mousePressed(ofMouseEventArgs &e) {
-    if (disabled) return;
+    if (disabled || (blocking_component && blocking_component != this)) return;
     if (inside(e.x, e.y) && e.button == 0) {
         active = true;
         erase_on_next_input_ = true;
@@ -84,11 +84,11 @@ void ofxCuiCui::TextInput::mousePressed(ofMouseEventArgs &e) {
 }
 
 void ofxCuiCui::TextInput::mouseReleased(ofMouseEventArgs &e) {
-    if (disabled) return;
+    if (disabled || (blocking_component && blocking_component != this)) return;
 }
 
 void ofxCuiCui::TextInput::keyPressed(ofKeyEventArgs &e) {
-    if (disabled) return;
+    if (disabled || (blocking_component && blocking_component != this)) return;
     if (!active) return;
     if (e.key == OF_KEY_BACKSPACE || e.key == OF_KEY_DEL) {
         labelOn.pop_back();

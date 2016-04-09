@@ -112,7 +112,8 @@ void ofxCuiCui::MultiSlider::clipValues() {
 }
 
 void ofxCuiCui::MultiSlider::mousePressed(ofMouseEventArgs &e) {
-    if (disabled || values.empty()) return;
+    if (disabled || (blocking_component && blocking_component != this)) return;
+    if (values.empty()) return;
     if (inside(e.x, e.y) && e.button == 0) {
         active = true;
         if (slider_rect_.inside(e.x, e.y)) {
@@ -148,7 +149,8 @@ void ofxCuiCui::MultiSlider::mousePressed(ofMouseEventArgs &e) {
 }
 
 void ofxCuiCui::MultiSlider::mouseDragged(ofMouseEventArgs &e) {
-    if (disabled || !active || !dragging_ || values.empty()) return;
+    if (disabled || (blocking_component && blocking_component != this)) return;
+    if (!active || !dragging_ || values.empty()) return;
     if (layout == Layout::Vertical) {
         int previous_slider_index = values.size() *
                                     (previous_position_.y - slider_rect_.y) /

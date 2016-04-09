@@ -41,7 +41,7 @@ ofxCuiCui::DraggableButton::~DraggableButton() {
 }
 
 void ofxCuiCui::DraggableButton::mousePressed(ofMouseEventArgs &e) {
-    if (disabled) return;
+    if (disabled || (blocking_component && blocking_component != this)) return;
     ofxCuiCui::Button::mousePressed(e);
     mouse_pressed_inside_ = inside(e.x, e.y);
     if (mouse_pressed_inside_) {
@@ -51,7 +51,7 @@ void ofxCuiCui::DraggableButton::mousePressed(ofMouseEventArgs &e) {
 }
 
 void ofxCuiCui::DraggableButton::mouseDragged(ofMouseEventArgs &e) {
-    if (disabled) return;
+    if (disabled || (blocking_component && blocking_component != this)) return;
     active = active || mouse_pressed_inside_;
     dragging_ = active && (dragging_ || (!dragging_ && inside(e.x, e.y)));
     if (dragging_) {
@@ -61,7 +61,7 @@ void ofxCuiCui::DraggableButton::mouseDragged(ofMouseEventArgs &e) {
 }
 
 void ofxCuiCui::DraggableButton::mouseReleased(ofMouseEventArgs &e) {
-    if (disabled) return;
+    if (disabled || (blocking_component && blocking_component != this)) return;
     if (dragging_) {
         DropEvent event(this, e.x, e.y);
         if (drop_event_callback_ != nullptr) {

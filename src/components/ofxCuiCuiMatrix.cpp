@@ -121,7 +121,8 @@ void ofxCuiCui::Matrix::draw() {
 }
 
 void ofxCuiCui::Matrix::mouseDragged(ofMouseEventArgs &e) {
-    if (disabled || !inside(e.x, e.y)) return;
+    if (disabled || (blocking_component && blocking_component != this)) return;
+    if (!inside(e.x, e.y)) return;
     for (auto &buttonRow : buttons) {
         for (auto &button : buttonRow) {
             if (&button != selected_button_ && button.inside(e.x, e.y)) {

@@ -140,6 +140,8 @@ class Component {
     bool hover_ = false;
     ofColor current_background_color_;
     ofColor current_frame_color_;
+
+    static Component* blocking_component;
 };
 
 /**
