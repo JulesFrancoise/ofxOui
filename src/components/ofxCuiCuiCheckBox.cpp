@@ -3,7 +3,7 @@
  *
  * Checkbox component (well... a button with an icon)
  *
- * This code has been authored by Jules Françoise <jfrancoi@sfu.ca>
+ * This code has been authored by Jules Francoise <jfrancoi@sfu.ca>
  * during his postdoc contract at Simon Fraser University (MovingStories
  * project).
  * See:

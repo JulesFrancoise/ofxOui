@@ -3,7 +3,7 @@
  *
  * Graph view area
  *
- * This code has been authored by Jules Fran√ßoise <jfrancoi@sfu.ca>
+ * This code has been authored by Jules Francoise <jfrancoi@sfu.ca>
  * during his postdoc contract at Simon Fraser University (MovingStories
  * project).
  * See:

@@ -4,10 +4,10 @@ ofxCuiCui is a collection of GUI components for OpenFrameworks. ofxCuiCui is dyn
 ![Image Alt](doc/doc-misc/screenshot.png)
 
 ## Author
-This code has been authored by <a href="http://julesfrancoise.com/" target="blank">Jules Françoise</a> during his postdoc contract at Simon Fraser University (<a href="http://movingstories.ca/" target="blank">MovingStories project</a>).
+This code has been authored by <a href="http://julesfrancoise.com/" target="blank">Jules Francoise</a> during his postdoc contract at Simon Fraser University (<a href="http://movingstories.ca/" target="blank">MovingStories project</a>).
 
 ## Copyright
-Copyright (C) 2016 Jules Françoise.
+Copyright (C) 2016 Jules Francoise.
 
 ## Licence
 

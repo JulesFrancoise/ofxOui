@@ -1,9 +1,9 @@
 /*
  * ofxCuiCui.hpp
  *
- * Just a few UI elements (flat as grandma use to make)
+ * Just a few UI elements
  *
- * This code has been authored by Jules Françoise <jfrancoi@sfu.ca>
+ * This code has been authored by Jules Francoise <jfrancoi@sfu.ca>
  * during his postdoc contract at Simon Fraser University (MovingStories
  * project).
  * See:
@@ -53,11 +53,11 @@
 
  @author
  This code has been authored by <a href="http://julesfrancoise.com/"
- target="blank">Jules Françoise</a> during his postdoc contract at Simon Fraser
+ target="blank">Jules Francoise</a> during his postdoc contract at Simon Fraser
  University (<a href="http://movingstories.ca/" target="blank">MovingStories
  project</a>).
 
- @copyright Copyright (C) 2016 Jules Françoise.
+ @copyright Copyright (C) 2016 Jules Francoise.
 
  @par Licence
  This Source Code Form is subject to the terms of the Mozilla Public License, v.
