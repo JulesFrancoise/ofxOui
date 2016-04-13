@@ -41,10 +41,10 @@ ofxCuiCui::Bpf::~Bpf() {
 
 void ofxCuiCui::Bpf::update() {
     ofxCuiCui::Component::update();
-    graph.view_area.x = x + font.padding;
-    graph.view_area.y = font.rect.y + font.rect.height + font.padding;
-    graph.view_area.width = width - 2 * font.padding;
-    graph.view_area.height = height - font.rect.height - 3 * font.padding;
+    graph.view.x = x + font.padding;
+    graph.view.y = font.rect.y + font.rect.height + font.padding;
+    graph.view.width = width - 2 * font.padding;
+    graph.view.height = height - font.rect.height - 3 * font.padding;
 }
 
 void ofxCuiCui::Bpf::clipBounds() {
@@ -66,20 +66,20 @@ void ofxCuiCui::Bpf::drawLabel() {
     ofSetLineWidth(3);
     ofNoFill();
     ofSetColor(current_frame_color_);
-    ofDrawRectangle(graph.view_area.x, graph.view_area.y, graph.view_area.width,
-                    graph.view_area.height);
+    ofDrawRectangle(graph.view.x, graph.view.y, graph.view.width,
+                    graph.view.height);
     ofFill();
     ofSetColor(current_frame_color_, 150);
 
     ofBeginShape();
     if (appearance == Appearance::FillBottom) {
         ofVertex(graph.coord2pix(values[0]).x,
-                 graph.view_area.y + graph.view_area.height);
+                 graph.view.y + graph.view.height);
     } else if (appearance == Appearance::FillTop) {
-        ofVertex(graph.coord2pix(values[0]).x, graph.view_area.y);
+        ofVertex(graph.coord2pix(values[0]).x, graph.view.y);
     } else if (appearance == Appearance::FillZero) {
         ofVertex(graph.coord2pix(values[0]).x,
-                 graph.view_area.y + graph.view_area.height / 2);
+                 graph.view.y + graph.view.height / 2);
     }
     for (auto &value : values) {
         ofVec2f pix = graph.coord2pix(value);
@@ -94,13 +94,12 @@ void ofxCuiCui::Bpf::drawLabel() {
     }
     if (appearance == Appearance::FillBottom) {
         ofVertex(graph.coord2pix(values[values.size() - 1]).x,
-                 graph.view_area.y + graph.view_area.height);
+                 graph.view.y + graph.view.height);
     } else if (appearance == Appearance::FillTop) {
-        ofVertex(graph.coord2pix(values[values.size() - 1]).x,
-                 graph.view_area.y);
+        ofVertex(graph.coord2pix(values[values.size() - 1]).x, graph.view.y);
     } else if (appearance == Appearance::FillZero) {
         ofVertex(graph.coord2pix(values[values.size() - 1]).x,
-                 graph.view_area.y + graph.view_area.height / 2);
+                 graph.view.y + graph.view.height / 2);
     }
     ofEndShape();
 }

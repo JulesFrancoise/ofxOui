@@ -207,3 +207,15 @@ void ofxCuiCui::Group::clear() {
     components.clear();
     setup();
 }
+
+void ofxCuiCui::Group::disable() {
+    for (auto &c : components) {
+        c.second->disabled = true;
+    }
+}
+
+void ofxCuiCui::Group::enable() {
+    for (auto &c : components) {
+        c.second->disabled = false;
+    }
+}

@@ -31,19 +31,9 @@ namespace ofxCuiCui {
 class Graph {
   public:
     /**
-     @brief View area rectangle (in pixels)
-     */
-    struct ViewArea {
-        float x = 0;
-        float y = 0;
-        float width = 100;
-        float height = 100;
-    };
-
-    /**
      @brief Bounds of the graph space
      */
-    struct GraphArea {
+    struct Bounds {
         float x_min = 0.;
         float x_max = 1.;
         float y_min = 0.;
@@ -77,6 +67,9 @@ class Graph {
      @brief Destructor
      */
     ~Graph();
+
+    void setupViewport();
+    void restoreViewport();
 
     /**
      @brief Set callback function for bounds changed events
@@ -138,17 +131,19 @@ class Graph {
     /**
      @brief View area rectangle (in pixels)
      */
-    ViewArea view_area;
+    ofRectangle view;
 
     /**
      @brief Bounds of the graph space
      */
-    GraphArea graph_area;
+    Bounds graph_area;
 
   protected:
     void mouseScrolled(ofMouseEventArgs& e);
     std::function<void(Graph::BoundsChangedEvent&)>
         bounds_changed_event_callback_;
+
+    bool viewport_valid = false;
 };
 }
 

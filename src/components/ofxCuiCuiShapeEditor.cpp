@@ -19,8 +19,8 @@
 
 #include "ofxCuiCuiShapeEditor.hpp"
 
-ofxCuiCui::ShapeEditor::ShapeEditor(int x_, int y_, int width_, int height_,
-                                    float angle_)
+ofxCuiCui::ShapeEditor::ShapeEditor(float x_, float y_, float width_,
+                                    float height_, float angle_)
     : x(x_),
       y(y_),
       width(width_),
@@ -98,7 +98,7 @@ void ofxCuiCui::ShapeEditor::draw() {
     ofTranslate(-x, -y);
 }
 
-bool ofxCuiCui::ShapeEditor::inside(int x_, int y_) {
+bool ofxCuiCui::ShapeEditor::inside(float x_, float y_) {
     ofVec2f point(x_ - x, y_ - y);
     point.rotate(-angle * 180. / M_PI);
     return (point.x >= -width / 2) && (point.x <= width / 2) &&
@@ -106,7 +106,7 @@ bool ofxCuiCui::ShapeEditor::inside(int x_, int y_) {
 }
 
 ofxCuiCui::ShapeEditor::Selector ofxCuiCui::ShapeEditor::insideSelector(
-    int x_, int y_) {
+    float x_, float y_) {
     ofVec2f point(x_ - x, y_ - y);
     point.rotate(-angle * 180. / M_PI);
     if ((point.x >= -width / 2 - selector_size / 2) &&

@@ -116,6 +116,16 @@ class Group {
     void clear();
 
     /**
+     @brief disable all components
+     */
+    void disable();
+
+    /**
+     @brief disable all components
+     */
+    void enable();
+
+    /**
      @brief x position (left)
      */
     float x;

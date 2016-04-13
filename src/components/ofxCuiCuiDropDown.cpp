@@ -104,7 +104,8 @@ void ofxCuiCui::DropDown::mouseReleased(ofMouseEventArgs &e) {
     }
     if (mouse_moved_) {
         active = false;
-        if (blocking_component == this) blocking_component = nullptr;
+        if (blocking_component == this)
+            blocking_component = nullptr;
     }
 }
 

@@ -133,7 +133,7 @@ class ShapeEditor {
      @param height_ component height
      @param angle_ component angle
      */
-    ShapeEditor(int x_ = 0, int y_ = 0, int width_ = 0, int height_ = 0,
+    ShapeEditor(float x_ = 0, float y_ = 0, float width_ = 0, float height_ = 0,
                 float angle_ = 0);
 
     /**
@@ -152,7 +152,7 @@ class ShapeEditor {
      @param y_ y position (in pixels)
      @return true if a point is inside the shape editor
      */
-    virtual bool inside(int x_, int y_);
+    virtual bool inside(float x_, float y_);
 
     /**
      @brief checks if a point is inside a selector of the shape editor (corner
@@ -161,7 +161,7 @@ class ShapeEditor {
      @param y_ y position (in pixels)
      @return true if a point is inside a selector the shape editor
      */
-    virtual ShapeEditor::Selector insideSelector(int x_, int y_);
+    virtual ShapeEditor::Selector insideSelector(float x_, float y_);
 
     /**
      @brief x position (left)
@@ -191,7 +191,7 @@ class ShapeEditor {
     /**
      @brief width of the editor frame
      */
-    int frame_width;
+    float frame_width;
 
     /**
      @brief color of the editor frame
@@ -201,7 +201,7 @@ class ShapeEditor {
     /**
      @brief size of the corner and edge selectors
      */
-    int selector_size;
+    float selector_size;
 
   protected:
     virtual void mouseDragged(ofMouseEventArgs &e);
