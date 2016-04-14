@@ -58,7 +58,6 @@ void ofxCuiCui::Matrix::setup() {
     }
     button_width_ = (grid_rect_.width - (cols - 1) * padding) / cols;
     button_height_ = (grid_rect_.height - (rows - 1) * padding) / rows;
-    vector<vector<ofxCuiCui::Button>> oldButtons(std::move(buttons));
     buttons.resize(rows);
     for (int row = 0; row < rows; row++) {
         buttons[row].resize(cols);
