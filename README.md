@@ -1,5 +1,5 @@
-# ofxCuiCui
-ofxCuiCui is a collection of GUI components for OpenFrameworks. ofxCuiCui is dynamic, easy to use, and fully customizable.
+# ofxOui
+ofxOui is a collection of GUI components for OpenFrameworks. ofxOui is dynamic, easy to use, and fully customizable.
 
 ![Image Alt](doc/doc-misc/screenshot.png)
 
@@ -15,4 +15,4 @@ This Source Code Form is subject to the terms of the Mozilla Public License, v. 
 
 ## Documentation
 
-The documentation is accessible online: http://julesfrancoise.github.io/ofxCuiCui
+The documentation is accessible online: http://julesfrancoise.github.io/ofxOui

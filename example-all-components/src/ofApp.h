@@ -18,7 +18,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxCuiCui.hpp"
+#include "ofxOui.hpp"
 
 class ofApp : public ofBaseApp {
   public:
@@ -39,17 +39,17 @@ class ofApp : public ofBaseApp {
     void gotMessage(ofMessage msg);
 
   protected:
-    ofxCuiCui::Group gui;
+    ofxOui::Group gui;
 
-    shared_ptr<ofxCuiCui::Numbox> numbox;
-    shared_ptr<ofxCuiCui::Slider> slider1;
-    shared_ptr<ofxCuiCui::Slider> slider2;
-    shared_ptr<ofxCuiCui::MultiSlider> multislider_color;
-    shared_ptr<ofxCuiCui::Bpf> bpf;
+    shared_ptr<ofxOui::Numbox> numbox;
+    shared_ptr<ofxOui::Slider> slider1;
+    shared_ptr<ofxOui::Slider> slider2;
+    shared_ptr<ofxOui::MultiSlider> multislider_color;
+    shared_ptr<ofxOui::Bpf> bpf;
 
-    void onNumboxEvent(ofxCuiCui::Numbox::ValueEvent& e);
-    void onSliderEvent(ofxCuiCui::Slider::ValueEvent& e);
-    void onTextInputEvent(ofxCuiCui::TextInput::TextInputEvent& e);
-    void onMultiSliderEvent(ofxCuiCui::MultiSlider::ValueEvent& e);
-    void onDropDownEvent(ofxCuiCui::DropDown::SelectEvent& e);
+    void onNumboxEvent(ofxOui::Numbox::ValueEvent& e);
+    void onSliderEvent(ofxOui::Slider::ValueEvent& e);
+    void onTextInputEvent(ofxOui::TextInput::TextInputEvent& e);
+    void onMultiSliderEvent(ofxOui::MultiSlider::ValueEvent& e);
+    void onDropDownEvent(ofxOui::DropDown::SelectEvent& e);
 };

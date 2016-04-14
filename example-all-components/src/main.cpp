@@ -17,13 +17,13 @@
 
 #include "ofApp.h"
 #include "ofMain.h"
-#include "ofxCuiCui.hpp"
+#include "ofxOui.hpp"
 
 //========================================================================
 int main() {
     ofSetupOpenGL(2200, 1400, OF_WINDOW);  // <-------- setup the GL context
 
-    ofxCuiCui::Globals::setRetina(true);
+    ofxOui::Globals::setRetina(true);
 
     // this kicks off the running of my app
     // can be OF_WINDOW or OF_FULLSCREEN
