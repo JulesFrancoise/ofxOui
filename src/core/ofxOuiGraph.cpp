@@ -136,6 +136,5 @@ void ofxOui::Graph::mouseScrolled(ofMouseEventArgs& e) {
     }
 }
 
-ofxOui::Graph::BoundsChangedEvent::BoundsChangedEvent(
-    ofxOui::Graph* sender_)
+ofxOui::Graph::BoundsChangedEvent::BoundsChangedEvent(ofxOui::Graph* sender_)
     : sender(sender_) {}

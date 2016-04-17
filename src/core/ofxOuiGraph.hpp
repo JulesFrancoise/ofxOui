@@ -83,7 +83,11 @@ class Graph {
     void onBoundsChanged(T* owner,
                          void (ListenerClass::*listenerMethod)(args)) {
         using namespace std::placeholders;
-        bounds_changed_event_callback_ = std::bind(listenerMethod, owner, _1);
+        if (owner)
+            bounds_changed_event_callback_ =
+                std::bind(listenerMethod, owner, _1);
+        else
+            bounds_changed_event_callback_ = nullptr;
     }
 
     /**

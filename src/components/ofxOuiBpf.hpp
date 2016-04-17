@@ -107,7 +107,10 @@ class Bpf : public Component {
     template <typename T, typename args, class ListenerClass>
     void onEditPoint(T *owner, void (ListenerClass::*listenerMethod)(args)) {
         using namespace std::placeholders;
-        callback_ = std::bind(listenerMethod, owner, _1);
+        if (owner)
+            callback_ = std::bind(listenerMethod, owner, _1);
+        else
+            callback_ = nullptr;
     }
 
     /**

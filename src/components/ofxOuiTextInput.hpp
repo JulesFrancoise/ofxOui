@@ -56,7 +56,10 @@ class TextInput : public Component {
     template <typename T, typename args, class ListenerClass>
     void onTextInput(T *owner, void (ListenerClass::*listenerMethod)(args)) {
         using namespace std::placeholders;
-        text_input_event_callback_ = std::bind(listenerMethod, owner, _1);
+        if (owner)
+            text_input_event_callback_ = std::bind(listenerMethod, owner, _1);
+        else
+            text_input_event_callback_ = nullptr;
     }
 
     /**

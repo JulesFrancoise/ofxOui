@@ -122,7 +122,10 @@ class ShapeEditor {
     template <typename T, typename args, class ListenerClass>
     void onEditShape(T *owner, void (ListenerClass::*listenerMethod)(args)) {
         using namespace std::placeholders;
-        shape_editor_event_callback_ = std::bind(listenerMethod, owner, _1);
+        if (owner)
+            shape_editor_event_callback_ = std::bind(listenerMethod, owner, _1);
+        else
+            shape_editor_event_callback_ = nullptr;
     }
 
     /**

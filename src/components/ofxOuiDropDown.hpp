@@ -64,7 +64,10 @@ class DropDown : public Component {
     template <typename T, typename args, class ListenerClass>
     void onSelect(T *owner, void (ListenerClass::*listenerMethod)(args)) {
         using namespace std::placeholders;
-        select_event_callback_ = std::bind(listenerMethod, owner, _1);
+        if (owner)
+            select_event_callback_ = std::bind(listenerMethod, owner, _1);
+        else
+            select_event_callback_ = nullptr;
     }
 
     /**

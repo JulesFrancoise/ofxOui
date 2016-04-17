@@ -67,7 +67,10 @@ class Matrix : public Component {
     template <typename T, typename args, class ListenerClass>
     void onClick(T* owner, void (ListenerClass::*listenerMethod)(args)) {
         using namespace std::placeholders;
-        click_event_callback_ = std::bind(listenerMethod, owner, _1);
+        if (owner)
+            click_event_callback_ = std::bind(listenerMethod, owner, _1);
+        else
+            click_event_callback_ = nullptr;
     }
 
     /**

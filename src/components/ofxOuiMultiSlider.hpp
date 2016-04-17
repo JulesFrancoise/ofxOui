@@ -80,7 +80,10 @@ class MultiSlider : public Component {
     template <typename T, typename args, class ListenerClass>
     void onEditSlider(T* owner, void (ListenerClass::*listenerMethod)(args)) {
         using namespace std::placeholders;
-        multislider_event_callback_ = std::bind(listenerMethod, owner, _1);
+        if (owner)
+            multislider_event_callback_ = std::bind(listenerMethod, owner, _1);
+        else
+            multislider_event_callback_ = nullptr;
     }
 
     /**

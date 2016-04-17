@@ -64,7 +64,10 @@ class Numbox : public Component {
     template <typename T, typename args, class ListenerClass>
     void onEditValue(T *owner, void (ListenerClass::*listenerMethod)(args)) {
         using namespace std::placeholders;
-        numbox_event_callback_ = std::bind(listenerMethod, owner, _1);
+        if (owner)
+            numbox_event_callback_ = std::bind(listenerMethod, owner, _1);
+        else
+            numbox_event_callback_ = nullptr;
     }
 
     /**

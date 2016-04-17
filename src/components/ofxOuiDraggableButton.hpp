@@ -84,7 +84,10 @@ class DraggableButton : public Button {
     template <typename T, typename args, class ListenerClass>
     void onDrop(T *owner, void (ListenerClass::*listenerMethod)(args)) {
         using namespace std::placeholders;
-        drop_event_callback_ = std::bind(listenerMethod, owner, _1);
+        if (owner)
+            drop_event_callback_ = std::bind(listenerMethod, owner, _1);
+        else
+            drop_event_callback_ = nullptr;
     }
 
     /**
