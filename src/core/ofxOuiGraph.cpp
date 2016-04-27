@@ -107,15 +107,30 @@ void ofxOui::Graph::mouseScrolled(ofMouseEventArgs& e) {
     // int x, int y, float scrollX, float scrollY
     if (insideViewArea(ofVec2f(e.x, e.y))) {
         if (ofGetKeyPressed(OF_KEY_SUPER)) {
-            float translateX =
-                0.01 * e.scrollY * (graph_area.x_max - graph_area.x_min);
-            float translateY =
-                0.01 * e.scrollY * (graph_area.y_max - graph_area.y_min);
-            graph_area.x_min += translateX * (e.x - view.x) / view.width;
-            graph_area.x_max -= translateX * (1. - (e.x - view.x) / view.width);
-            graph_area.y_min += translateY * (e.y - view.y) / view.height;
-            graph_area.y_max -=
-                translateY * (1. - (e.y - view.y) / view.height);
+            if (iso_zoom) {
+                float translateX =
+                    0.01 * e.scrollY * (graph_area.x_max - graph_area.x_min);
+                float translateY =
+                    0.01 * e.scrollY * (graph_area.y_max - graph_area.y_min);
+                graph_area.x_min += translateX * (e.x - view.x) / view.width;
+                graph_area.x_max -=
+                    translateX * (1. - (e.x - view.x) / view.width);
+                graph_area.y_min += translateY * (e.y - view.y) / view.height;
+                graph_area.y_max -=
+                    translateY * (1. - (e.y - view.y) / view.height);
+            } else {
+                if (std::abs(e.scrollX) > std::abs(e.scrollY)) {
+                    float translateX = -0.01 * e.scrollX *
+                                       (graph_area.x_max - graph_area.x_min);
+                    graph_area.x_min -= translateX;
+                    graph_area.x_max += translateX;
+                } else {
+                    float translateY = -0.01 * e.scrollY *
+                                       (graph_area.y_max - graph_area.y_min);
+                    graph_area.y_min -= translateY;
+                    graph_area.y_max += translateY;
+                }
+            }
         } else {
             if (std::abs(e.scrollX) > std::abs(e.scrollY)) {
                 float translateX =

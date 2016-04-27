@@ -142,6 +142,8 @@ class Graph {
      */
     Bounds graph_area;
 
+    bool iso_zoom = true;
+
   protected:
     void mouseScrolled(ofMouseEventArgs& e);
     std::function<void(Graph::BoundsChangedEvent&)>
