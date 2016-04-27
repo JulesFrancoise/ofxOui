@@ -46,7 +46,8 @@ enum class Type {
     Slider,
     MultiSlider,
     Bpf,
-    TextInput
+    TextInput,
+    Waveform
 };
 
 /**

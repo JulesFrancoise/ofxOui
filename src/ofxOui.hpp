@@ -32,6 +32,7 @@
 #include "components/ofxOuiShapeEditor.hpp"
 #include "components/ofxOuiSlider.hpp"
 #include "components/ofxOuiTextInput.hpp"
+#include "components/ofxOuiWaveform.hpp"
 #include "core/ofxOuiColormap.hpp"
 #include "core/ofxOuiCommon.hpp"
 #include "core/ofxOuiComponent.hpp"

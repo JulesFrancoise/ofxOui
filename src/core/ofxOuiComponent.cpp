@@ -99,7 +99,7 @@ void ofxOui::Component::drawFrame() {
     if (style.frame_width <= 0) return;
     ofNoFill();
     ofSetLineWidth(ofxOui::Globals::getRetina() ? style.frame_width * 2.
-                                                   : style.frame_width);
+                                                : style.frame_width);
     ofSetColor(current_frame_color_);
     if (shape == ofxOui::Shape::Rectangle) {
         ofDrawRectangle(x, y, width, height);
