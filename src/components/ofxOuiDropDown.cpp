@@ -25,8 +25,7 @@ ofxOui::DropDown::DropDown(int x_, int y_, int width_, int height_)
     shape = ofxOui::Shape::Rectangle;
     icon.load("caret-down.png");
     icon.alignment = ofxOui::Anchor::MiddleRight;
-    ofAddListener(ofEvents().mouseMoved, this,
-                  &ofxOui::DropDown::mouseMoved);
+    ofAddListener(ofEvents().mouseMoved, this, &ofxOui::DropDown::mouseMoved);
     ofAddListener(ofEvents().mousePressed, this,
                   &ofxOui::DropDown::mousePressed);
     ofAddListener(ofEvents().mouseReleased, this,
@@ -83,8 +82,6 @@ void ofxOui::DropDown::mousePressed(ofMouseEventArgs &e) {
     if (active) {
         blocking_component = this;
         createSubGui();
-    } else if (blocking_component == this) {
-        blocking_component = nullptr;
     }
 }
 
@@ -104,9 +101,8 @@ void ofxOui::DropDown::mouseReleased(ofMouseEventArgs &e) {
     }
     if (mouse_moved_) {
         active = false;
-        if (blocking_component == this)
-            blocking_component = nullptr;
     }
+    blocking_component = nullptr;
 }
 
 void ofxOui::DropDown::createSubGui() {

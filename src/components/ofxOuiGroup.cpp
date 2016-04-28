@@ -117,14 +117,27 @@ void ofxOui::Group::draw() {
         ofSetColor(frameColor);
         ofDrawRectangle(x, y, width, height);
     }
+    int remaining(components.size());
     for (auto &c : components) {
         if (c.second && c.second->type() != ofxOui::Type::DropDown) {
             c.second->draw();
+            remaining--;
         }
     }
+    if (remaining == 0) return;
     for (auto &c : components) {
-        if (c.second && c.second->type() == ofxOui::Type::DropDown) {
+        if (c.second && c.second->type() == ofxOui::Type::DropDown &&
+            c.second.get() != ofxOui::Component::blocking_component) {
             c.second->draw();
+            remaining--;
+        }
+    }
+    if (remaining == 0) return;
+    for (auto &c : components) {
+        if (c.second && c.second->type() == ofxOui::Type::DropDown &&
+            c.second.get() == ofxOui::Component::blocking_component) {
+            c.second->draw();
+            remaining--;
         }
     }
 }
@@ -134,8 +147,7 @@ bool ofxOui::Group::inside(int x_, int y_) {
 }
 
 bool ofxOui::Group::addComponent(shared_ptr<ofxOui::Component> component,
-                                    int row, int col, int rowSpan,
-                                    int colSpan) {
+                                 int row, int col, int rowSpan, int colSpan) {
     vector<int> coordinates({row, col, rowSpan, colSpan});
     for (auto &c : components) {
         if (row >= c.first[0] && row < c.first[0] + c.first[2] &&
@@ -149,8 +161,7 @@ bool ofxOui::Group::addComponent(shared_ptr<ofxOui::Component> component,
     return true;
 }
 
-shared_ptr<ofxOui::Component> ofxOui::Group::getComponent(int row,
-                                                                int col) {
+shared_ptr<ofxOui::Component> ofxOui::Group::getComponent(int row, int col) {
     for (auto &c : components) {
         if (row == c.first[0] && col == c.first[1] && c.second) {
             return c.second;
@@ -159,8 +170,7 @@ shared_ptr<ofxOui::Component> ofxOui::Group::getComponent(int row,
     return nullptr;
 }
 
-shared_ptr<ofxOui::Component> ofxOui::Group::getComponentByLabel(
-    string label) {
+shared_ptr<ofxOui::Component> ofxOui::Group::getComponentByLabel(string label) {
     for (auto &c : components) {
         if (c.second && c.second->labelOff == label) {
             return c.second;
@@ -178,8 +188,7 @@ vector<shared_ptr<ofxOui::Component>> ofxOui::Group::getComponents() {
     return comp_vec;
 }
 
-bool ofxOui::Group::removeComponent(
-    shared_ptr<ofxOui::Component> component) {
+bool ofxOui::Group::removeComponent(shared_ptr<ofxOui::Component> component) {
     int buttonIndex(0);
     for (auto &c : components) {
         if (component == c.second) {

@@ -32,6 +32,8 @@ namespace ofxOui {
  */
 class Component {
   public:
+    friend class Group;
+
     /**
      @brief Constructor
      @param x_ x position (left)

@@ -39,9 +39,6 @@ void ofxOui::TextBox::update() {
     } else {
         rect = base_Font_->getStringBoundingBox(text, x, y);
         y_diff_ = y - rect.y;
-        int avgLetterHeight =
-            base_Font_->getStringBoundingBox("n", x, y).height;
-
         if (alignment == ofxOui::Anchor::TopLeft) {
             rect.x = x + padding;
             rect.y = y + padding;
@@ -109,7 +106,7 @@ void ofxOui::TextBox::setLineHeight(float line_height) {
 
 void ofxOui::TextBox::adjustFont_() {
     base_Font_ = ofxOui::Globals::requestFont(this, font_path_, font_size_,
-                                                 line_height_, letter_spacing_);
+                                              line_height_, letter_spacing_);
 }
 
 int ofxOui::TextBox::getCharacterIndex(int x_, int y_) const {
