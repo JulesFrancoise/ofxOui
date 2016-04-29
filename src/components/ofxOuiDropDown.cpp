@@ -43,6 +43,7 @@ ofxOui::DropDown::~DropDown() {
                      &ofxOui::DropDown::mouseReleased);
     ofRemoveListener(ofEvents().mouseDragged, this,
                      &ofxOui::DropDown::mouseDragged);
+    if (blocking_component == this) blocking_component = nullptr;
 }
 
 void ofxOui::DropDown::update() {
@@ -75,11 +76,13 @@ void ofxOui::DropDown::mouseDragged(ofMouseEventArgs &e) {
 
 void ofxOui::DropDown::mousePressed(ofMouseEventArgs &e) {
     if (disabled || (blocking_component && blocking_component != this)) return;
+    if (items.empty()) return;
     if (inside(e.x, e.y) && e.button == 0) {
         active = !active;
         mouse_moved_ = false;
     }
     if (active) {
+        cout << "blocking = " << labelOn << " (" << this << ")" << endl;
         blocking_component = this;
         createSubGui();
     }
@@ -90,6 +93,7 @@ void ofxOui::DropDown::mouseReleased(ofMouseEventArgs &e) {
     if (!active || e.button != 0) return;
     for (auto &gui : sub_buttons_) {
         if (gui->inside(e.x, e.y)) {
+            mouse_moved_ = true;
             labelOn = labelOff = gui->labelOff;
             ofxOui::DropDown::SelectEvent event =
                 ofxOui::DropDown::SelectEvent(this, labelOn);
@@ -101,18 +105,16 @@ void ofxOui::DropDown::mouseReleased(ofMouseEventArgs &e) {
     }
     if (mouse_moved_) {
         active = false;
+        sub_buttons_.clear();
+        blocking_component = nullptr;
     }
-    blocking_component = nullptr;
 }
 
 void ofxOui::DropDown::createSubGui() {
-    for (auto &gui : sub_buttons_) {
-        delete gui;
-    }
     sub_buttons_.clear();
     for (int i = 0; i < items.size(); i++) {
-        sub_buttons_.push_back(
-            new ofxOui::Button(x, y + 5 + (i + 1) * height, width, height));
+        sub_buttons_.push_back(make_shared<ofxOui::Button>(
+            x, y + 5 + (i + 1) * height, width, height));
         sub_buttons_[i]->shape = ofxOui::Shape::Rectangle;
         sub_buttons_[i]->width = width;
         sub_buttons_[i]->height = height;
