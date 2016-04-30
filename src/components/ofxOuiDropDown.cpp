@@ -82,7 +82,6 @@ void ofxOui::DropDown::mousePressed(ofMouseEventArgs &e) {
         mouse_moved_ = false;
     }
     if (active) {
-        cout << "blocking = " << labelOn << " (" << this << ")" << endl;
         blocking_component = this;
         createSubGui();
     }
