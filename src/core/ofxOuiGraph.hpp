@@ -55,7 +55,7 @@ class Graph {
         /**
          @brief pointer to the sender component
          */
-        Graph const* sender;
+        Graph* sender;
     };
 
     /**

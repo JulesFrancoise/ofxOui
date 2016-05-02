@@ -45,7 +45,7 @@ class Button : public Component {
         /**
          @brief pointer to the sender component
          */
-        Button const* sender;
+        Button* sender;
 
         /**
          @brief button value
