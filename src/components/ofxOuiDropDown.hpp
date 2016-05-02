@@ -107,6 +107,7 @@ class DropDown : public Component {
     void mouseReleased(ofMouseEventArgs &e);
 
     bool mouse_moved_;
+    bool clear_buttons_ = false;
     vector<shared_ptr<ofxOui::Button>> sub_buttons_;
     std::function<void(DropDown::SelectEvent &)> select_event_callback_;
 };

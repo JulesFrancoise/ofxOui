@@ -48,6 +48,10 @@ ofxOui::DropDown::~DropDown() {
 
 void ofxOui::DropDown::update() {
     ofxOui::Component::update();
+    if (clear_buttons_) {
+        sub_buttons_.clear();
+        clear_buttons_ = false;
+    }
     if (active) {
         for (auto &gui : sub_buttons_) {
             gui->update();
@@ -104,7 +108,7 @@ void ofxOui::DropDown::mouseReleased(ofMouseEventArgs &e) {
     }
     if (mouse_moved_) {
         active = false;
-        sub_buttons_.clear();
+        clear_buttons_ = true;
         blocking_component = nullptr;
     }
 }
