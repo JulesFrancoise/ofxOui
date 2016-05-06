@@ -21,6 +21,7 @@
 #define ofxOuiGraph_hpp
 
 #include "ofMain.h"
+#include "ofxOuiTextBox.hpp"
 
 namespace ofxOui {
 
@@ -30,6 +31,30 @@ namespace ofxOui {
  */
 class Graph {
   public:
+    class Ruler {
+      public:
+        enum class Layout { Horizontal, Vertical };
+
+        Ruler(Layout layout_ = Layout::Horizontal) : layout(layout_) {}
+        void update();
+        void draw();
+
+        float x;
+        float y;
+        float width;
+        float height;
+
+        float min;
+        float max;
+
+        Layout layout;
+
+      protected:
+        vector<float> ticks_minor;
+        vector<float> ticks_major;
+        vector<TextBox> ticks_labels;
+    };
+
     /**
      @brief Bounds of the graph space
      */
@@ -68,6 +93,7 @@ class Graph {
      */
     ~Graph();
 
+    void drawRuler();
     void setupViewport();
     void restoreViewport();
 
@@ -143,6 +169,8 @@ class Graph {
     Bounds graph_area;
 
     bool iso_zoom = true;
+    std::pair<bool, Ruler> horizontal_ruler = {true, {}};
+    std::pair<bool, Ruler> vertical_ruler = {true, {Ruler::Layout::Vertical}};
 
   protected:
     void mouseScrolled(ofMouseEventArgs& e);
