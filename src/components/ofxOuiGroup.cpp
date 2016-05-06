@@ -146,6 +146,22 @@ bool ofxOui::Group::inside(int x_, int y_) {
     return (x_ >= x) && (x_ <= x + width) && (y_ >= y) && (y_ <= y + height);
 }
 
+int ofxOui::Group::rows() const {
+    int num_rows = 0;
+    for (auto &c : components) {
+        num_rows = max(num_rows, c.first[0] + c.first[2]);
+    }
+    return num_rows;
+}
+
+int ofxOui::Group::cols() const {
+    int num_cols = 0;
+    for (auto &c : components) {
+        num_cols = max(num_cols, c.first[1] + c.first[3]);
+    }
+    return num_cols;
+}
+
 bool ofxOui::Group::addComponent(shared_ptr<ofxOui::Component> component,
                                  int row, int col, int rowSpan, int colSpan) {
     vector<int> coordinates({row, col, rowSpan, colSpan});

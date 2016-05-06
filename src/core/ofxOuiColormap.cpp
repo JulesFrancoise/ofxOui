@@ -66,6 +66,10 @@ void ofxOui::Colormap::resize(int num_values) {
     generateValues();
 }
 
+ofColor ofxOui::Colormap::sample(float position) {
+    return base_colors_[0] * (1 - position) + base_colors_[1] * position;
+}
+
 void ofxOui::Colormap::generateValues() {
     int num_values = values.size();
     for (int i = 0; i < num_values; i++) {

@@ -70,6 +70,8 @@ class Colormap {
      */
     vector<ofColor> values;
 
+    ofColor sample(float position);
+
   private:
     void generateValues();
     vector<ofColor> base_colors_;

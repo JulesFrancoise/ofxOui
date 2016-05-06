@@ -62,6 +62,18 @@ class Group {
     virtual bool inside(int x_, int y_);
 
     /**
+     @brief get the number of rows in the group
+     @return total number of rows (including multi-row spans)
+     */
+    int rows() const;
+
+    /**
+     @brief get the number of columns in the group
+     @return total number of columns (including multi-column spans)
+     */
+    int cols() const;
+
+    /**
      @brief add a component to the group
      @param component shared pointer to the component to add
      @param row index of the row in the group grid
