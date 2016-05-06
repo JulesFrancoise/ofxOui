@@ -60,7 +60,7 @@ class ShapeEditor {
         /**
          @brief type of editing event
          */
-        enum class Type { Translation, Scaling, Rotation };
+        enum class Type { Translation, Scaling, Rotation, Done };
 
         /**
          @brief Constructor

@@ -20,7 +20,7 @@
 #include "ofxOuiShapeEditor.hpp"
 
 ofxOui::ShapeEditor::ShapeEditor(float x_, float y_, float width_,
-                                    float height_, float angle_)
+                                 float height_, float angle_)
     : x(x_),
       y(y_),
       width(width_),
@@ -105,8 +105,8 @@ bool ofxOui::ShapeEditor::inside(float x_, float y_) {
            (point.y >= -height / 2) && (point.y <= height / 2);
 }
 
-ofxOui::ShapeEditor::Selector ofxOui::ShapeEditor::insideSelector(
-    float x_, float y_) {
+ofxOui::ShapeEditor::Selector ofxOui::ShapeEditor::insideSelector(float x_,
+                                                                  float y_) {
     ofVec2f point(x_ - x, y_ - y);
     point.rotate(-angle * 180. / M_PI);
     if ((point.x >= -width / 2 - selector_size / 2) &&
@@ -179,8 +179,8 @@ void ofxOui::ShapeEditor::mouseDragged(ofMouseEventArgs &e) {
         mouseDraggedRotation(e);
         type = EditEvent::Type::Rotation;
     }
-    ofxOui::ShapeEditor::EditEvent event = ofxOui::ShapeEditor::EditEvent(
-        this, type, x, y, width, height, angle);
+    ofxOui::ShapeEditor::EditEvent event =
+        ofxOui::ShapeEditor::EditEvent(this, type, x, y, width, height, angle);
     if (shape_editor_event_callback_ != nullptr) {
         shape_editor_event_callback_(event);
     }
@@ -188,14 +188,10 @@ void ofxOui::ShapeEditor::mouseDragged(ofMouseEventArgs &e) {
 
 void ofxOui::ShapeEditor::mouseReleased(ofMouseEventArgs &e) {
     if (dragging_ == Selector::None) return;
-    if (dragging_mode_ == MouseDraggingMode::Rotation) {
-        // RotateEvent
-    } else {
-        if (dragging_ == Selector::Shape) {
-            // TranslateEvent
-        } else {
-            // ResizeEvent
-        }
+    ofxOui::ShapeEditor::EditEvent event = ofxOui::ShapeEditor::EditEvent(
+        this, EditEvent::Type::Done, x, y, width, height, angle);
+    if (shape_editor_event_callback_ != nullptr) {
+        shape_editor_event_callback_(event);
     }
     dragging_ = Selector::None;
 }
@@ -284,8 +280,8 @@ void ofxOui::ShapeEditor::mouseDraggedRotation(ofMouseEventArgs &e) {
 }
 
 ofxOui::ShapeEditor::EditEvent::EditEvent(ShapeEditor *sender_, Type type_,
-                                             float x_, float y_, float width_,
-                                             float height_, float angle_)
+                                          float x_, float y_, float width_,
+                                          float height_, float angle_)
     : sender(sender_),
       type(type_),
       x(x_),
