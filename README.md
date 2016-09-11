@@ -1,6 +1,9 @@
 # ofxOui
 ofxOui is a collection of GUI components for OpenFrameworks. ofxOui is dynamic, easy to use, and fully customizable.
 
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+==> This project is no more under active development.
+
 ![Image Alt](doc/doc-misc/screenshot.png)
 
 ## Author
