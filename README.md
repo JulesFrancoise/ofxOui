@@ -1,13 +1,15 @@
-# ofxCuiCui
-ofxCuiCui is a collection of GUI components for OpenFrameworks. ofxCuiCui is dynamic, easy to use, and fully customizable.
+# ofxOui
+ofxOui is a collection of GUI components for OpenFrameworks. ofxOui is dynamic and customizable.
+
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
 ![Image Alt](doc/doc-misc/screenshot.png)
 
 ## Author
-This code has been authored by <a href="http://julesfrancoise.com/" target="blank">Jules Françoise</a> during his postdoc contract at Simon Fraser University (<a href="http://movingstories.ca/" target="blank">MovingStories project</a>).
+This code has been authored by <a href="http://julesfrancoise.com/" target="blank">Jules Francoise</a> during his postdoc contract at Simon Fraser University (<a href="http://movingstories.ca/" target="blank">MovingStories project</a>).
 
 ## Copyright
-Copyright (C) 2016 Jules Françoise.
+Copyright (C) 2016 Jules Francoise.
 
 ## Licence
 
@@ -15,4 +17,4 @@ This Source Code Form is subject to the terms of the Mozilla Public License, v. 
 
 ## Documentation
 
-The documentation is accessible online: http://julesfrancoise.github.io/ofxCuiCui
+The documentation is accessible online: http://julesfrancoise.github.io/ofxOui

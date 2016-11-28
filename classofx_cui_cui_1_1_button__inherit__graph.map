@@ -1,5 +1,0 @@
-<map id="ofxCuiCui::Button" name="ofxCuiCui::Button">
-<area shape="rect" id="node3" href="$classofx_cui_cui_1_1_check_box.html" title="Check box component (specialization of button) " alt="" coords="5,152,153,177"/>
-<area shape="rect" id="node4" href="$classofx_cui_cui_1_1_draggable_button.html" title="Draggable Button (specialization of button) " alt="" coords="176,152,363,177"/>
-<area shape="rect" id="node2" href="$classofx_cui_cui_1_1_component.html" title="Base UI Component (equivalent to a label) " alt="" coords="96,5,251,31"/>
-</map>

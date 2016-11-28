@@ -1,0 +1,6 @@
+<map id="ofxOui::Numbox" name="ofxOui::Numbox">
+<area shape="rect" id="node2" href="$classofx_oui_1_1_component.html" title="Base UI Component (equivalent to a label) " alt="" coords="172,213,309,239"/>
+<area shape="rect" id="node3" href="$classofx_oui_1_1_style.html" title="Style structure shared among all components. " alt="" coords="5,66,102,91"/>
+<area shape="rect" id="node4" href="$classofx_oui_1_1_icon.html" title="Icon image box wrapper. " alt="" coords="249,66,341,91"/>
+<area shape="rect" id="node5" href="$classofx_oui_1_1_text_box.html" title="Text box font wrapper. " alt="" coords="420,66,535,91"/>
+</map>

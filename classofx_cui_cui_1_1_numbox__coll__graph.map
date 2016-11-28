@@ -1,6 +1,0 @@
-<map id="ofxCuiCui::Numbox" name="ofxCuiCui::Numbox">
-<area shape="rect" id="node2" href="$classofx_cui_cui_1_1_component.html" title="Base UI Component (equivalent to a label) " alt="" coords="155,213,310,239"/>
-<area shape="rect" id="node3" href="$classofx_cui_cui_1_1_text_box.html" title="Text box font wrapper. " alt="" coords="5,66,139,91"/>
-<area shape="rect" id="node4" href="$classofx_cui_cui_1_1_icon.html" title="Icon image box wrapper. " alt="" coords="170,66,282,91"/>
-<area shape="rect" id="node5" href="$classofx_cui_cui_1_1_style.html" title="Style structure shared among all components. " alt="" coords="305,66,421,91"/>
-</map>

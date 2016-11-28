@@ -1,8 +1,0 @@
-<map id="ofxCuiCui::Matrix::ClickEvent" name="ofxCuiCui::Matrix::ClickEvent">
-<area shape="rect" id="node3" href="$classofx_cui_cui_1_1_matrix.html" title="Button Matrix (supports both button &#45;single&#45;button activation&#45; and toggle &#45;multi&#45;button activation&#45;) ..." alt="" coords="178,375,300,400"/>
-<area shape="rect" id="node4" href="$classofx_cui_cui_1_1_component.html" title="Base UI Component (equivalent to a label) " alt="" coords="141,213,297,239"/>
-<area shape="rect" id="node8" href="$classofx_cui_cui_1_1_button.html" title="Button component (allows both button and toggle modes) " alt="" coords="240,288,366,313"/>
-<area shape="rect" id="node5" href="$classofx_cui_cui_1_1_text_box.html" title="Text box font wrapper. " alt="" coords="5,66,139,91"/>
-<area shape="rect" id="node6" href="$classofx_cui_cui_1_1_icon.html" title="Icon image box wrapper. " alt="" coords="163,66,275,91"/>
-<area shape="rect" id="node7" href="$classofx_cui_cui_1_1_style.html" title="Style structure shared among all components. " alt="" coords="298,66,414,91"/>
-</map>

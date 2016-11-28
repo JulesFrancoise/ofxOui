@@ -1,7 +1,0 @@
-<map id="ofxCuiCui::Numbox::ValueEvent" name="ofxCuiCui::Numbox::ValueEvent">
-<area shape="rect" id="node3" href="$classofx_cui_cui_1_1_numbox.html" title="Number box (with mouse + keyboard interaction, C74 max style) " alt="" coords="123,288,259,313"/>
-<area shape="rect" id="node4" href="$classofx_cui_cui_1_1_component.html" title="Base UI Component (equivalent to a label) " alt="" coords="235,213,390,239"/>
-<area shape="rect" id="node5" href="$classofx_cui_cui_1_1_text_box.html" title="Text box font wrapper. " alt="" coords="85,66,219,91"/>
-<area shape="rect" id="node6" href="$classofx_cui_cui_1_1_icon.html" title="Icon image box wrapper. " alt="" coords="250,66,362,91"/>
-<area shape="rect" id="node7" href="$classofx_cui_cui_1_1_style.html" title="Style structure shared among all components. " alt="" coords="385,66,501,91"/>
-</map>
