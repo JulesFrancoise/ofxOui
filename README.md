@@ -1,5 +1,5 @@
 # ofxOui
-ofxOui is a collection of GUI components for OpenFrameworks. ofxOui is dynamic, easy to use, and fully customizable.
+ofxOui is a collection of GUI components for OpenFrameworks. ofxOui is dynamic and fully customizable.
 
 [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
